@@ -23,13 +23,13 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->nickname }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} ({{ Auth::user()->nickname }}) <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li>
+                                <a href="{{ route('users.show', Auth::user()->nickname) }}"><i class="fa fa-fw fa-user"></i>&nbsp;Мой профиль</a>
+                            </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ url('auth/logout') }}">Выйти</a></li>
+                            <li><a href="{{ url('auth/logout') }}"><i class="fa fa-fw fa-sign-out"></i>&nbsp;Выйти</a></li>
                         </ul>
                     </li>
                 @else

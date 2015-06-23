@@ -31,6 +31,8 @@
     @section('js')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.1/vue.min.js"></script>
+        <script src="{{ asset('js/vue-resource.min.js') }}"></script>
     @show
 </body>
 </html>

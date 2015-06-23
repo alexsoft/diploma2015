@@ -55,6 +55,20 @@ class AuthController extends Controller
         return view('auth.signup');
     }
 
+    public function postSignup(Request $request)
+    {
+        $this->validate($request, [
+            'nickname' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::create($request->only(['nickname', 'password']));
+
+        Auth::login($user);
+
+        return redirect()->route('dialogs.index');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *

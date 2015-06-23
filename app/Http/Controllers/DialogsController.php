@@ -14,14 +14,14 @@ class DialogsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return Response
+     * @internal param Request $request
      */
     public function index()
     {
-        $users = User::where('id', '!=', Auth::id())->get();
+//        $users = User::where('id', '!=', Auth::id())->get();
 
-        return view('dialogs.index')->with(compact('users'));
+        return view('dialogs.index');
     }
 
     /**

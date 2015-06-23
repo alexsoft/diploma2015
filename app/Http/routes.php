@@ -14,4 +14,29 @@ Route::group(['middleware' => 'auth'], function() {
         'uses' => 'DialogsController@index'
     ]);
 
+    Route::group(['prefix' => 'users'], function() {
+
+        Route::get('/', [
+            'as'   => 'users.index',
+            'uses' => "UsersController@index"
+        ]);
+
+        Route::get('@{nickname}', [
+            'as'   => 'users.show',
+            'uses' => 'UsersController@show'
+        ]);
+
+        Route::get('@{nickname}/edit', [
+            'as'   => 'users.edit',
+            'uses' => 'UsersController@edit'
+        ]);
+
+        Route::put('@{nickname}', [
+            'as'   => 'users.update',
+            'uses' => 'UsersController@update'
+        ]);
+
+    });
+
+
 });
