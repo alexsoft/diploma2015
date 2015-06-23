@@ -55,7 +55,7 @@ class UsersController extends Controller
     {
         $user = User::where('nickname', $nickname)->firstOrFail();
 
-        if ($request->isJson()) {
+        if ($request->ajax()) {
             $userInfo = $request->get('user');
 
             foreach ($userInfo as $key => $value) {
@@ -65,10 +65,10 @@ class UsersController extends Controller
             return [
                 'success' => $user->save()
             ];
+        } else {
+            $user->update($request->only('email', 'name'));
+
+            return redirect()->route('users.show', $user->nickname);
         }
-
-        $user->update($request->only('email', 'name'));
-
-        return redirect()->route('users.show', $user->nickname);
     }
 }

@@ -11,9 +11,11 @@
                 </div>
             </div>
 
-            <ul>
-                <li v-repeat="users | filterBy search">@{{ nickname }}</li>
-            </ul>
+            <div class="list-group" style="margin-top: 25px;">
+                <a href="{{ route('dialogs.index') }}/@{{ nickname }}" class="list-group-item" v-repeat="users | filterBy search">
+                    @{{ nickname }}
+                </a>
+            </div>
         </div>
     </div>
 

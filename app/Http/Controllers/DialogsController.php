@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -37,22 +38,40 @@ class DialogsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param $nickname
+     * @param Request $request
      * @return Response
      */
-    public function store()
+    public function store($nickname, Request $request)
     {
-        //
+        $toUser = User::select('id')->where('nickname', $nickname)->firstOrFail();
+
+        $msg = Message::create([
+            'from_id' => Auth::id(),
+            'to_id'   => $toUser->id,
+            'message' => $request->message
+        ]);
+
+        dd($msg);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $nickname
      * @return Response
      */
-    public function show($id)
+    public function show($nickname)
     {
-        //
+        $user = User::where('nickname', $nickname)->firstOrFail();
+
+        $messages = Message::with(['from', 'to'])
+            ->orderBy('created_at', 'ASC')
+            ->where(['from_id' => Auth::id(), 'to_id' => $user->id])
+            ->orWhere(['from_id' => $user->id, 'to_id' => Auth::id()])
+            ->get();
+
+        return view('dialogs.show')->with(compact('user', 'messages'));
     }
 
     /**

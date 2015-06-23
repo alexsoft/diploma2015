@@ -9,10 +9,25 @@ Route::controller('auth', 'Auth\AuthController');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::get('dialogs', [
-        'as'   => 'dialogs.index',
-        'uses' => 'DialogsController@index'
-    ]);
+    Route::group(['prefix' => 'dialogs'], function() {
+
+        Route::get('/', [
+            'as'   => 'dialogs.index',
+            'uses' => 'DialogsController@index'
+        ]);
+
+        Route::get('{nickname}', [
+            'as'   => 'dialogs.show',
+            'uses' => 'DialogsController@show'
+        ]);
+
+        Route::put('{nickname}', [
+            'as'   => 'dialogs.create',
+            'uses' => 'DialogsController@store'
+        ]);
+
+    });
+
 
     Route::group(['prefix' => 'users'], function() {
 
