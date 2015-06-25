@@ -44,10 +44,9 @@
         (function($) {
 
             var $modal = $('.info-modal'),
-                userName = $modal.data('name'),
-                userEmail = $modal.data('email');
+                userName = $modal.data('name');
 
-            if (userName === '' || userEmail === '') {
+            if (userName === '') {
                 $modal.modal();
             }
 
@@ -55,8 +54,7 @@
                 var data = {
                     _method: 'PUT',
                     user: {
-                        name:  $('#name').val(),
-                        email: $('#email').val()
+                        name:  $('#name').val()
                     }
                 };
 

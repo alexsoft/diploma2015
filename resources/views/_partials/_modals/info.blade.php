@@ -1,4 +1,4 @@
-<div class="modal fade info-modal" data-name="{{ Auth::user()->name }}" data-email="{{ Auth::user()->name }}">
+<div class="modal fade info-modal" data-name="{{ Auth::user()->name }}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,11 +9,6 @@
                 <div class="form-group">
                     {!! Form::label('name', 'Имя') !!}
                     {!! Form::text('name', Auth::user()->name, ['class' => 'form-control']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::label('email', 'E-mail') !!}
-                    {!! Form::email('email', Auth::user()->email, ['class' => 'form-control']) !!}
-                    <span class="help-block">Требуется в случае, если Вы забыли свой пароль</span>
                 </div>
             </div>
             <div class="modal-footer">
