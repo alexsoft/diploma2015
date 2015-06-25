@@ -52,7 +52,7 @@ class DialogsController extends Controller
             'message' => $request->message
         ]);
 
-        return Response::json(['status' => 'success']);
+        return \Response::json(['status' => 'success']);
     }
 
     /**
