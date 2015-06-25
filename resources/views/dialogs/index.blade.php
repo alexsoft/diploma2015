@@ -1,5 +1,7 @@
 @extends('_layouts.default')
 
+@section('page_title', 'Диалоги')
+
 @section('content')
 
     <div class="row users-list">

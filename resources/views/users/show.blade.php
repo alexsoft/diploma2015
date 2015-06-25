@@ -1,6 +1,6 @@
 @extends('_layouts.default')
 
-@section('page_title', 'User show')
+@section('page_title', $user->name)
 
 @section('content')
 
