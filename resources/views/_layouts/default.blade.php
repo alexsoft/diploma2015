@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('page_title', 'Chat')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @section('css')
         <link href='//fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
