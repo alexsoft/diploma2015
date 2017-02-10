@@ -1,10 +1,12 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
-class Message extends BaseModel {
-
+class Message extends BaseModel
+{
     protected $table = 'messages';
 
     protected $fillable = ['from_id', 'to_id', 'message'];
@@ -17,6 +19,7 @@ class Message extends BaseModel {
             return $decrypt;
         } catch (DecryptException $e) {
             $this->delete();
+
             return 'Ошибка! Сообщение было повреждено, расшифровка невозможна. Сообщение будет удалено!';
         }
     }
@@ -35,5 +38,4 @@ class Message extends BaseModel {
     {
         return $this->belongsTo(User::class, 'to_id');
     }
-
 }

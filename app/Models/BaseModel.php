@@ -1,7 +1,9 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BaseModel extends Model {
-
+class BaseModel extends Model
+{
 }

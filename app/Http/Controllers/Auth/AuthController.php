@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Auth, Validator;
 
 class AuthController extends Controller
 {
@@ -29,7 +30,7 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'nickname' => 'required',
-            'password'  => 'required'
+            'password'  => 'required',
         ]);
 
         if (Auth::attempt($request->only('nickname', 'password'), $request->has('remember'))) {
@@ -39,7 +40,7 @@ class AuthController extends Controller
         return redirect()->back()
             ->withInput($request->only('nickname', 'remember'))
             ->withErrors([
-                'email' => 'Никнейм и/или почта неправильные'
+                'email' => 'Никнейм и/или почта неправильные',
             ]);
     }
 

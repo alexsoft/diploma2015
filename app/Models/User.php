@@ -34,6 +34,6 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt((string)$value);
+        $this->attributes['password'] = bcrypt((string) $value);
     }
 }
