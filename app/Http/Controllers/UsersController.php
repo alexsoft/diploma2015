@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Models\User;
 use Auth;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-
     public function index()
     {
         $users = User::where('id', '!=', Auth::id())->get();
@@ -63,7 +60,7 @@ class UsersController extends Controller
             }
 
             return [
-                'success' => $user->save()
+                'success' => $user->save(),
             ];
         } else {
             $user->update($request->only('email', 'name'));

@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
-use App\Models\User;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use Auth;
+use App\Models\User;
+use App\Models\Message;
+use Illuminate\Http\Request;
 
 class DialogsController extends Controller
 {
@@ -20,7 +16,7 @@ class DialogsController extends Controller
      */
     public function index()
     {
-//        $users = User::where('id', '!=', Auth::id())->get();
+        //        $users = User::where('id', '!=', Auth::id())->get();
 
         return view('dialogs.index');
     }
@@ -49,7 +45,7 @@ class DialogsController extends Controller
         $msg = Message::create([
             'from_id' => Auth::id(),
             'to_id'   => $toUser->id,
-            'message' => $request->message
+            'message' => $request->message,
         ]);
 
         return \Response::json(['status' => 'success']);

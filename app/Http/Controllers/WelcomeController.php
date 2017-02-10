@@ -1,8 +1,9 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 class WelcomeController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('guest');
@@ -12,5 +13,4 @@ class WelcomeController extends Controller
     {
         return view('welcome');
     }
-
 }
